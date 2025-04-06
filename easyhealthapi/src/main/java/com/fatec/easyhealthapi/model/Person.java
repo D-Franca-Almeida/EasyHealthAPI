@@ -1,28 +1,32 @@
 package com.fatec.easyhealthapi.model;
 
+import com.fatec.easyhealthapi.enums.EasyHealthStatus;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-
-import com.fatec.easyhealthapi.enums.EasyHealthStatus;
-
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "persons") 
+@Table(name = "persons")
+@Inheritance(strategy = InheritanceType.JOINED) // ou SINGLE_TABLE, se preferir
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
     private Integer idade;
-    @Enumerated(EnumType.STRING) // Adicione esta anotação
-    private EasyHealthStatus status = EasyHealthStatus.PENDING;
+    private String email;
+    private String senha;
 
+    @Enumerated(EnumType.STRING)
+    private EasyHealthStatus status = EasyHealthStatus.PENDING;
 	
 
     //Constructors
@@ -64,4 +68,37 @@ public class Person {
     public void setIdade(Integer idade) {
         this.idade = idade;
     }
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+	public EasyHealthStatus getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(EasyHealthStatus status) {
+		this.status = status;
+	}
+    
+    
+    
 }
