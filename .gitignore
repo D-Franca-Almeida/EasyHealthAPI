@@ -22,3 +22,14 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+# Ignorar arquivos de configuração sensíveis
+src/main/resources/application.properties
+src/main/resources/application.yml
+
+# Ignorar qualquer configuração específica de perfil
+src/main/resources/application-*.properties
+src/main/resources/application-*.yml
+
+easyhealthapi/src/main/resources/application.properties
+easyhealthapi/src/main/resources/application.yml
+
