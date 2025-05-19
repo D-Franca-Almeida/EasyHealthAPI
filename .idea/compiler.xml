@@ -9,6 +9,9 @@
         <module name="easyhealthapi" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="easyhealthapi" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
