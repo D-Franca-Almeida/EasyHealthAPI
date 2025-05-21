@@ -1,6 +1,7 @@
 package com.fatec.easyhealthapi.service;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import com.fatec.easyhealthapi.model.Token;
 import com.fatec.easyhealthapi.model.Person;
 import com.fatec.easyhealthapi.repository.TokenRepository;
 import com.fatec.easyhealthapi.repository.PersonRepository;
+import com.fatec.easyhealthapi.enums.Genero;
 
 @Service
 public class AuthService {
@@ -22,46 +24,64 @@ public class AuthService {
     @Autowired
     private TokenRepository tokenRepository;
 
-    public void signup(String email, String password, String nome, Integer idade) throws Exception {
+    public void signup(String email, String senha, String nome, String cpf,
+                       LocalDate dataNascimento, Genero genero, String telefone,
+                       String endereco) throws Exception {
+
+        // Verifica se email já existe
+        if (personRepository.findByEmail(email).isPresent()) {
+            throw new Exception("E-mail já cadastrado");
+        }
+
+        // Verifica se CPF já existe
+        if (personRepository.findByCpf(cpf).isPresent()) {
+            throw new Exception("CPF já cadastrado");
+        }
+
         Person person = new Person();
         person.setEmail(email);
-        person.setSenha(password);
+        person.setSenha(senha);
         person.setNome(nome);
-        person.setIdade(idade);
-
-        Optional<Person> personFound = personRepository.findByEmail(email);
-        if (personFound.isPresent()) {
-            throw new Exception("E-mail already exists");
-        }
+        person.setCpf(cpf);
+        person.setDataNascimento(dataNascimento);
+        person.setGenero(genero);
+        person.setTelefone(telefone);
+        person.setEndereco(endereco);
 
         personRepository.save(person);
     }
 
-    public Token signin(String email, String senha) {
-        Optional<Person> personFound = personRepository.findByEmail(email);
-        if (personFound.isPresent() && personFound.get().getSenha().equals(senha)) {
-            Token token = new Token();
-            token.setPerson(personFound.get());
-            token.setToken(UUID.randomUUID().toString());
-            token.setExpirationTime(Instant.now()
-                    .plusSeconds(TOKEN_TTL)
-                    .toEpochMilli());
-            token = tokenRepository.save(token);
-            return token;
+    public Token signin(String email, String senha) throws Exception {
+        Optional<Person> personOpt = personRepository.findByEmail(email);
+
+        if (!personOpt.isPresent()) {
+            throw new Exception("Usuário não encontrado");
         }
 
-        return null;
+        Person person = personOpt.get();
+
+        if (!person.getSenha().equals(senha)) {
+            throw new Exception("Senha incorreta");
+        }
+
+        // Cria token de autenticação
+        Token token = new Token();
+        token.setPerson(person);
+        token.setToken(UUID.randomUUID().toString());
+        token.setExpirationTime(Instant.now()
+                .plusSeconds(TOKEN_TTL)
+                .toEpochMilli());
+
+        return tokenRepository.save(token);
     }
 
     public Boolean validate(String token) {
         Optional<Token> found = tokenRepository.findByToken(token);
-        return found.isPresent() && found.get().getExpirationTime() > Instant.now().toEpochMilli();
+        return found.isPresent() &&
+                found.get().getExpirationTime() > Instant.now().toEpochMilli();
     }
 
     public void signout(String token) {
-        Optional<Token> found = tokenRepository.findByToken(token);
-        if (found.isPresent()) {
-            tokenRepository.delete(found.get());
-        }
+        tokenRepository.findByToken(token).ifPresent(tokenRepository::delete);
     }
 }

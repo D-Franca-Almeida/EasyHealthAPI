@@ -1,50 +1,55 @@
 package com.fatec.easyhealthapi.model;
 
 import com.fatec.easyhealthapi.enums.EasyHealthStatus;
+import com.fatec.easyhealthapi.enums.Genero;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table(name = "persons")
-@Inheritance(strategy = InheritanceType.JOINED) // ou SINGLE_TABLE, se preferir
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String nome;
-    private Integer idade;
+
     private String email;
+
     private String senha;
+
+    private String cpf;
+
+    private String telefone;
+
+    private LocalDate dataNascimento;
+
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
 
     @Enumerated(EnumType.STRING)
     private EasyHealthStatus status = EasyHealthStatus.PENDING;
-	
 
-    //Constructors
-    public Person() {
-    	
+    private String endereco;
+
+    // Constructors
+    public Person() {}
+
+    public Person(Integer id, String nome, String email, String cpf, LocalDate dataNascimento, Genero genero, EasyHealthStatus status) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.genero = genero;
+        this.status = status;
     }
-    
-    
-    public Person(Integer id, String nome, Integer idade, EasyHealthStatus status) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.idade = idade;
-		this.status = status;
-	}
 
-
-	// Getters e Setters
+    // Getters e Setters
     public Integer getId() {
         return id;
     }
@@ -61,44 +66,71 @@ public class Person {
         this.nome = nome;
     }
 
-    public Integer getIdade() {
-        return idade;
+    public String getEmail() {
+        return email;
     }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public String getSenha() {
+        return senha;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
+    public String getCpf() {
+        return cpf;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
+    public String getTelefone() {
+        return telefone;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 
+    public Genero getGenero() {
+        return genero;
+    }
 
-	public EasyHealthStatus getStatus() {
-		return status;
-	}
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
 
+    public EasyHealthStatus getStatus() {
+        return status;
+    }
 
-	public void setStatus(EasyHealthStatus status) {
-		this.status = status;
-	}
-    
-    
-    
+    public void setStatus(EasyHealthStatus status) {
+        this.status = status;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    public int getIdade(){
+        if (this.dataNascimento == null) return 0;
+        return Period.between(this.dataNascimento, LocalDate.now()).getYears();
+    }
 }
