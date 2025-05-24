@@ -1,14 +1,18 @@
 package com.fatec.easyhealthapi.model;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "profissionais")
+@DiscriminatorValue("PROFISSIONAL")
+@PrimaryKeyJoinColumn(name = "person_id")
 public class Profissional extends Person {
 
-    private String especialidade;
-    private String identificacao;
+	private String especialidade;
+	private String identificacao;
 
     public Profissional() {}
 
