@@ -1,51 +1,56 @@
 package com.fatec.easyhealthapi.model;
 
+import com.fatec.easyhealthapi.enums.StatusConsulta;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "consultas")
 public class Consulta {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @ManyToOne
-    private Paciente paciente;
-    @ManyToOne
-    private Profissional profissional;
-    private LocalDateTime dataHora;
-    private String status;
-    
-    // Construtores
-    
-    public Consulta() {
-    	
-    }
 
-	public Consulta(Integer id, Paciente paciente, Profissional profissional, LocalDateTime dataHora, String status) {
-		super();
-		this.id = id;
-		this.paciente = paciente;
-		this.profissional = profissional;
-		this.dataHora = dataHora;
-		this.status = status;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private LocalDateTime dataHora;
+
+	private String motivo;
+
+	@ManyToOne
+	@JoinColumn(name = "paciente_id")
+	private Paciente paciente;
+
+	@ManyToOne
+	@JoinColumn(name = "profissional_id")
+	private Profissional profissional;
+
+	@Enumerated(EnumType.STRING)
+	private StatusConsulta status = StatusConsulta.AGENDADA;
+
+	// Getters e Setters
+
+	public LocalDateTime getDataHora() {
+		return dataHora;
 	}
-	
-	
-	// Getters and Setters
-	
-	public Integer getId() {
+
+	public void setDataHora(LocalDateTime dataHora) {
+		this.dataHora = dataHora;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
 	}
 
 	public Paciente getPaciente() {
@@ -64,27 +69,11 @@ public class Consulta {
 		this.profissional = profissional;
 	}
 
-	public LocalDateTime getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(LocalDateTime dataHora) {
-		this.dataHora = dataHora;
-	}
-
-	public String getStatus() {
+	public StatusConsulta getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(StatusConsulta status) {
 		this.status = status;
 	}
-    
-
-	
-    
-    
-    
-    
 }
-
