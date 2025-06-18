@@ -80,10 +80,6 @@ POST	/auth/signin	Realiza o login e retorna um token.	(nenhum)	{"email": "...", 
 POST	/auth/check	Verifica se um token de autenticação ainda é válido.	Header: token: SEU_TOKEN_AQUI	(nenhum)
 POST	/auth/signout	Invalida um token, efetivamente realizando o logout do usuário.	Header: token: SEU_TOKEN_AQUI	(nenhum)
 
-Exportar para as Planilhas
-
-
-Exportar para as Planilhas
 Tarefas e Objetivos
 Método	Endpoint	Descrição	Corpo da Requisição
 GET	/objectives	Lista todos os objetivos de saúde disponíveis no catálogo.	(nenhum)
@@ -92,7 +88,6 @@ GET	/tasks/person/{id}	Lista todas as tarefas de uma pessoa específica.	(nenhum
 PUT	/tasks/{id}/status	Atualiza o status de uma tarefa específica.	{"status": "DONE"}
 DELETE	/tasks/{id}	Realiza a deleção lógica de uma tarefa.	(nenhum)
 
-Exportar para as Planilhas
 Consultas (/consultas)
 Método	Endpoint	Descrição	Corpo da Requisição
 POST	/consultas/agendar	Agenda uma nova consulta entre um paciente e um profissional.	{"pacienteId": 1, "profissionalId": 2, ...}
