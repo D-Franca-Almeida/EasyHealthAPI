@@ -12,7 +12,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tokens")
 public class Token {
-    //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -21,7 +20,6 @@ public class Token {
     private Person person;
     private Long expirationTime;
 
-    //Construtores
     public Token() {
     }
 
