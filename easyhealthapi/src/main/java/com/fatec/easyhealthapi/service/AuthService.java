@@ -1,87 +1,113 @@
 package com.fatec.easyhealthapi.service;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fatec.easyhealthapi.enums.Genero;
+import com.fatec.easyhealthapi.model.Paciente;
+import com.fatec.easyhealthapi.model.Person;
+import com.fatec.easyhealthapi.model.Profissional;
+import com.fatec.easyhealthapi.repository.PacienteRepository;
+import com.fatec.easyhealthapi.repository.PersonRepository;
+import com.fatec.easyhealthapi.repository.ProfissionalRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.fatec.easyhealthapi.model.Token;
-import com.fatec.easyhealthapi.model.Person;
-import com.fatec.easyhealthapi.repository.TokenRepository;
-import com.fatec.easyhealthapi.repository.PersonRepository;
-import com.fatec.easyhealthapi.enums.Genero;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 @Service
+@RequiredArgsConstructor // Anotação do Lombok que cria um construtor com todos os campos `final`. É uma forma moderna de fazer injeção de dependência.
 public class AuthService {
-    private Integer TOKEN_TTL = 60 * 2; // Token válido por 2 minutos
 
-    @Autowired
-    private PersonRepository personRepository;
+    // Injeção de dependências via construtor (melhor prática)
+    private final PersonRepository personRepository;
+    private final PacienteRepository pacienteRepository;
+    private final ProfissionalRepository profissionalRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private TokenRepository tokenRepository;
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public void signup(String email, String senha, String nome, String cpf,
-                       LocalDate dataNascimento, Genero genero, String telefone,
-                       String endereco) throws Exception {
-
-        // Verifica se email já existe
-        if (personRepository.findByEmail(email).isPresent()) {
+    /**
+     * Cadastra um novo Paciente no sistema.
+     * A senha é criptografada antes de ser salva.
+     */
+    public Paciente signupPaciente(Map<String, String> body) throws Exception {
+        if (personRepository.findByEmail(body.get("email")).isPresent()) {
             throw new Exception("E-mail já cadastrado");
         }
-
-        // Verifica se CPF já existe
-        if (personRepository.findByCpf(cpf).isPresent()) {
+        if (personRepository.findByCpf(body.get("cpf")).isPresent()) {
             throw new Exception("CPF já cadastrado");
         }
 
-        Person person = new Person();
-        person.setEmail(email);
-        person.setSenha(senha);
-        person.setNome(nome);
-        person.setCpf(cpf);
-        person.setDataNascimento(dataNascimento);
-        person.setGenero(genero);
-        person.setTelefone(telefone);
-        person.setEndereco(endereco);
+        Paciente paciente = new Paciente();
+        paciente.setNome(body.get("nome"));
+        paciente.setEmail(body.get("email"));
+        // CRIPTOGRAFANDO A SENHA
+        paciente.setSenha(passwordEncoder.encode(body.get("senha")));
+        paciente.setCpf(body.get("cpf"));
+        paciente.setTelefone(body.get("telefone"));
+        paciente.setEndereco(body.get("endereco"));
+        paciente.setDataNascimento(LocalDate.parse(body.get("dataNascimento"), DATE_FORMATTER));
+        paciente.setGenero(Genero.valueOf(body.get("genero").toUpperCase()));
+        paciente.setAltura(Double.parseDouble(body.get("altura")));
+        paciente.setPeso(Double.parseDouble(body.get("peso")));
+        paciente.setEstadoCivil(body.get("estadocivil"));
+        paciente.setNacionalidade(body.get("nacionalidade"));
+        paciente.setNomeSocial(body.get("nomesocial"));
+        paciente.setOcupacao(body.get("ocupacao"));
 
-        personRepository.save(person);
+        return pacienteRepository.save(paciente);
     }
 
-    public Token signin(String email, String senha) throws Exception {
-        Optional<Person> personOpt = personRepository.findByEmail(email);
-
-        if (!personOpt.isPresent()) {
-            throw new Exception("Usuário não encontrado");
+    /**
+     * Cadastra um novo Profissional no sistema.
+     * A senha é criptografada antes de ser salva.
+     */
+    public Profissional signupProfissional(Map<String, String> body) throws Exception {
+        if (personRepository.findByEmail(body.get("email")).isPresent()) {
+            throw new Exception("E-mail já cadastrado");
+        }
+        if (personRepository.findByCpf(body.get("cpf")).isPresent()) {
+            throw new Exception("CPF já cadastrado");
         }
 
-        Person person = personOpt.get();
+        Profissional profissional = new Profissional();
+        profissional.setNome(body.get("nome"));
+        profissional.setEmail(body.get("email"));
+        // CRIPTOGRAFANDO A SENHA
+        profissional.setSenha(passwordEncoder.encode(body.get("senha")));
+        profissional.setCpf(body.get("cpf"));
+        profissional.setTelefone(body.get("telefone"));
+        profissional.setEndereco(body.get("endereco"));
+        profissional.setDataNascimento(LocalDate.parse(body.get("dataNascimento"), DATE_FORMATTER));
+        profissional.setGenero(Genero.valueOf(body.get("genero").toUpperCase()));
+        profissional.setEspecialidade(body.get("especialidade"));
+        profissional.setIdentificacao(body.get("identificacao"));
 
-        if (!person.getSenha().equals(senha)) {
-            throw new Exception("Senha incorreta");
-        }
-
-        // Cria token de autenticação
-        Token token = new Token();
-        token.setPerson(person);
-        token.setToken(UUID.randomUUID().toString());
-        token.setExpirationTime(Instant.now()
-                .plusSeconds(TOKEN_TTL)
-                .toEpochMilli());
-
-        return tokenRepository.save(token);
+        return profissionalRepository.save(profissional);
     }
 
-    public Boolean validate(String token) {
-        Optional<Token> found = tokenRepository.findByToken(token);
-        return found.isPresent() &&
-                found.get().getExpirationTime() > Instant.now().toEpochMilli();
-    }
+    /**
+     * Autentica um usuário e retorna um token JWT.
+     */
+    public String signin(String email, String senha) {
+        // 1. O AuthenticationManager usa o UserDetailsService e o PasswordEncoder que configuramos
+        // para verificar se o usuário existe e se a senha (criptografada) confere.
+        // Se as credenciais estiverem erradas, ele lançará uma exceção (que o controller irá capturar).
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(email, senha)
+        );
 
-    public void signout(String token) {
-        tokenRepository.findByToken(token).ifPresent(tokenRepository::delete);
+        // 2. Se a linha acima não lançou uma exceção, o usuário está autenticado.
+        // Agora, buscamos os dados completos da pessoa para gerar o token.
+        Person person = personRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalStateException("Usuário autenticado não encontrado no banco de dados."));
+
+        // 3. Geramos e retornamos o token JWT.
+        return jwtService.generateToken(person);
     }
 }
