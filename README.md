@@ -3,7 +3,7 @@ Projeto Interdisciplinar - Faculdade de Tecnologia de Cotia
 A EasyHealth API é o back-end para uma plataforma de saúde e bem-estar, projetada para conectar Pacientes e Profissionais. O sistema permite o gerenciamento de hábitos saudáveis através de tarefas personalizadas, agendamento de consultas e um ambiente seguro de autenticação.
 
 ✨ Principais Funcionalidades
-Autenticação Segura com JWT: Sistema de cadastro e login baseado em JSON Web Tokens (JWT) e integrado com Spring Security. As senhas são armazenadas de forma segura usando criptografia (BCrypt).
+Autenticação Segura com JWT: Sistema de cadastro e login baseado em JSON Web Tokens (JWT) e integrado com Spring Security. As senhas são armazenadas de forma segura usando criptografia.
 Perfis de Usuário com Herança: Utiliza uma estrutura de herança com uma entidade Person base, da qual Paciente e Profissional herdam atributos comuns, promovendo a reutilização de código.
 Catálogo de Hábitos Dinâmico: O sistema possui um catálogo de Objetivos e Modelos de Hábito que é carregado na inicialização, permitindo que a lista de atividades saudáveis seja facilmente expandida no futuro.
 Geração de Tarefas Personalizadas: Usuários podem selecionar um objetivo de saúde (ex: "Perder Peso"), e a API automaticamente cria uma lista de tarefas (hábitos) correspondentes para eles.
