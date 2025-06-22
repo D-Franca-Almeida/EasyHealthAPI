@@ -21,11 +21,11 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthService {
 
-    private final PersonRepository personRepository;
-    private final PacienteRepository pacienteRepository;
-    private final ProfissionalRepository profissionalRepository;
+    private PersonRepository personRepository;
+    private PacienteRepository pacienteRepository;
+    private ProfissionalRepository profissionalRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtService jwtService;
+    private JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");

@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec198ed-ed2a-40e9-8c0c-c1d83ca5bbf2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyhealthapi/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/service/JwtService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +26,31 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;D-Franca-Almeida&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/D-Franca-Almeida/EasyHealthAPI.git&quot;,
+    &quot;accountId&quot;: &quot;22ed02c3-e036-4656-b564-2db695239ae0&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="printErrorStackTraces" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -33,16 +61,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.EasyhealthapiApplication.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.EasyhealthapiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#3 on develop&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="EasyhealthapiApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fatec.easyhealthapi.EasyhealthapiApplication" />
