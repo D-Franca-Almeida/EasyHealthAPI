@@ -45,12 +45,20 @@ Abra o arquivo src/main/resources/application.properties.
 Garanta que as configurações do banco de dados e do JWT estejam corretas.
 <!-- end list -->
 
-Properties
+Properties (OBS: Só está disponível por ser uma aplicação de caracter escolar, entretanto e imprescindível que não suba esse item quando for utilizar no seu ambiente, a sugestão é utilizar o .gitignore para não deixar essa configuração disponível.
 
 # Configuração do Servidor
 server.port=8181
 
 # Configuração do Banco de Dados PostgreSQL
+Tenha o docker instalado em sua máquina. 
+Nesse projeto temos um arquivo chamado docker.compose.yml. 
+Para subir sua aplicação entre na pasta onde está esse arquivo é de o seguinte comando 
+docker-compose up
+Esse comando cria toda a estrutura necessária para rodar a aplicação do banco de dados, em seguida vá para o PgAdmin que foi criado e faça as 
+configurações do banco de dados conforme abaixo, e importante ressaltar que a senha do banco que está no docker.compose tem que ser a mesma que está no 
+application.properties, outro ponto importante e avaliar a necessidade da criação de uma rede interna para rodar o docker. 
+
 spring.datasource.url=jdbc:postgresql://localhost:5432/easyhealthdb
 spring.datasource.username=postgres
 spring.datasource.password=sua_senha_do_banco
