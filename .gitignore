@@ -26,11 +26,6 @@ replay_pid*
 src/main/resources/application.properties
 src/main/resources/application.yml
 
-# Ignorar qualquer configuração específica de perfil
-src/main/resources/application-*.properties
-src/main/resources/application-*.yml
 
-easyhealthapi/src/main/resources/application.properties
-easyhealthapi/src/main/resources/application.yml
 
 /.metadata/

@@ -1,0 +1,217 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4ec198ed-ed2a-40e9-8c0c-c1d83ca5bbf2\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/modules.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2x6T4Ocsszq1kEELHqEpqwhEiH7\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.EasyhealthapiApplication.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"EasyhealthapiApplication\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.fatec.easyhealthapi.EasyhealthapiApplication\" />\r\n      <module name=\"easyhealthapi\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.fatec.easyhealthapi.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4ec198ed-ed2a-40e9-8c0c-c1d83ca5bbf2\" name=\"Changes\" comment=\"\" />\r\n      <created>1747257335245</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1747257335245</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0902a59948d5c65494d8ad5e90083d18c2da05b4)
++++ b/.idea/workspace.xml	(date 1750592491278)
+@@ -8,6 +8,16 @@
+       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    <list default="true" id="4ec198ed-ed2a-40e9-8c0c-c1d83ca5bbf2" name="Changes" comment="Adicionando o swagger">
++      <change afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/enums/StatusConsulta.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/controller/AuthController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/controller/ConsultaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/controller/ConsultaController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Consulta.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Paciente.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Profissional.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Profissional.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/repository/ConsultaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/repository/ConsultaRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/service/ConsultaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyhealthapi/src/main/java/com/fatec/easyhealthapi/service/ConsultaService.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,7 +32,31 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;D-Franca-Almeida&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/D-Franca-Almeida/EasyHealthAPI.git&quot;,
++    &quot;accountId&quot;: &quot;22ed02c3-e036-4656-b564-2db695239ae0&quot;
++  }
++}</component>
++  <component name="MavenImportPreferences">
++    <option name="generalSettings">
++      <MavenGeneralSettings>
++        <option name="printErrorStackTraces" value="true" />
++      </MavenGeneralSettings>
++    </option>
+   </component>
+   <component name="ProjectColorInfo">{
+   &quot;customColor&quot;: &quot;&quot;,
+@@ -33,16 +67,17 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.EasyhealthapiApplication.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "main",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.EasyhealthapiApplication.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;#3 on develop&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="EasyhealthapiApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.fatec.easyhealthapi.EasyhealthapiApplication" />
+@@ -67,6 +102,51 @@
+       <option name="presentableId" value="Default" />
+       <updated>1747257335245</updated>
+     </task>
++    <task id="LOCAL-00001" summary="Adicionando o swagger">
++      <option name="closed" value="true" />
++      <created>1750590232849</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1750590232849</updated>
++    </task>
++    <task id="LOCAL-00002" summary="Adicionando o swagger">
++      <option name="closed" value="true" />
++      <created>1750590265171</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1750590265171</updated>
++    </task>
++    <task id="LOCAL-00003" summary="Adicionando o swagger">
++      <option name="closed" value="true" />
++      <created>1750590271266</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1750590271266</updated>
++    </task>
++    <task id="LOCAL-00004" summary="Adicionando o swagger">
++      <option name="closed" value="true" />
++      <created>1750590309984</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1750590309984</updated>
++    </task>
++    <task id="LOCAL-00005" summary="Adicionando o swagger">
++      <option name="closed" value="true" />
++      <created>1750590343594</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1750590343594</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Adicionando o swagger" />
++    <option name="LAST_COMMIT_MESSAGE" value="Adicionando o swagger" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/easyhealthapi/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_23\" default=\"true\" project-jdk-name=\"openjdk-23\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 0902a59948d5c65494d8ad5e90083d18c2da05b4)
++++ b/.idea/misc.xml	(date 1750592491277)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: easyhealthapi/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\txsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n\t<modelVersion>4.0.0</modelVersion>\r\n\t<parent>\r\n\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t<artifactId>spring-boot-starter-parent</artifactId>\r\n\t\t<version>3.4.3</version>\r\n\t\t<relativePath/> <!-- lookup parent from repository -->\r\n\t</parent>\r\n\t<groupId>com.fatec</groupId>\r\n\t<artifactId>easyhealthapi</artifactId>\r\n\t<version>0.0.1-SNAPSHOT</version>\r\n\t<name>easyhealthapi</name>\r\n\t<description>Demo project for Spring Boot</description>\r\n\t<url/>\r\n\t<licenses>\r\n\t\t<license/>\r\n\t</licenses>\r\n\t<developers>\r\n\t\t<developer/>\r\n\t</developers>\r\n\t<scm>\r\n\t\t<connection/>\r\n\t\t<developerConnection/>\r\n\t\t<tag/>\r\n\t\t<url/>\r\n\t</scm>\r\n\t<properties>\r\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>\r\n    <java.version>21</java.version>\r\n</properties>\r\n\r\n\t<dependencies>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-data-jpa</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-validation</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-web</artifactId>\r\n\t\t</dependency>\r\n\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.postgresql</groupId>\r\n\t\t\t<artifactId>postgresql</artifactId>\r\n\t\t\t<scope>runtime</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-test</artifactId>\r\n\t\t\t<scope>test</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n            <groupId>com.h2database</groupId>\r\n            <artifactId>h2</artifactId>\r\n            <scope>runtime</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-websocket</artifactId>\r\n        </dependency>\r\n        <!--<dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-security</artifactId>\r\n        </dependency> \r\n\t\t\r\n<dependency>\r\n    <groupId>br.edu.fateccotia</groupId>\r\n    <artifactId>tasklist</artifactId>\r\n    <version>0.0.1-SNAPSHOT</version>\r\n</dependency>\r\n-->\r\n\t</dependencies>\r\n\r\n\t<build>\r\n\t\t<plugins>\r\n\t\t\t<plugin>\r\n\t\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t\t<artifactId>spring-boot-maven-plugin</artifactId>\r\n\t\t\t</plugin>\r\n\t\t</plugins>\r\n\t</build>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/easyhealthapi/pom.xml b/easyhealthapi/pom.xml
+--- a/easyhealthapi/pom.xml	(revision 0902a59948d5c65494d8ad5e90083d18c2da05b4)
++++ b/easyhealthapi/pom.xml	(date 1750592491280)
+@@ -84,6 +84,15 @@
+ 				<groupId>org.springframework.boot</groupId>
+ 				<artifactId>spring-boot-maven-plugin</artifactId>
+ 			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-compiler-plugin</artifactId>
++				<configuration>
++					<source>21</source>
++					<target>21</target>
++					<compilerArgs>--enable-preview</compilerArgs>
++				</configuration>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ 
+Index: easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Profissional.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.fatec.easyhealthapi.model;\r\n\r\nimport jakarta.persistence.*;\r\n\r\n@Entity\r\n@Table(name = \"profissionais\")\r\n@PrimaryKeyJoinColumn(name = \"person_id\")\r\npublic class Profissional extends Person {\r\n\r\n\tprivate String especialidade;\r\n\tprivate String identificacao;\r\n\r\n<<<<<<< HEAD\r\n\t// Getters e Setters manuais\r\n\tpublic String getEspecialidade() { return especialidade; }\r\n\tpublic void setEspecialidade(String especialidade) { this.especialidade = especialidade; }\r\n\tpublic String getIdentificacao() { return identificacao; }\r\n\tpublic void setIdentificacao(String identificacao) { this.identificacao = identificacao; }\r\n}\r\n=======\r\n\tpublic Profissional() {}\r\n\r\n\tpublic Profissional(String especialidade, String identificacao) {\r\n\t\tthis.especialidade = especialidade;\r\n\t\tthis.identificacao = identificacao;\r\n\t}\r\n\r\n\tpublic String getEspecialidade() {\r\n\t\treturn especialidade;\r\n\t}\r\n\r\n\tpublic void setEspecialidade(String especialidade) {\r\n\t\tthis.especialidade = especialidade;\r\n\t}\r\n\r\n\tpublic String getIdentificacao() {\r\n\t\treturn identificacao;\r\n\t}\r\n\r\n\tpublic void setIdentificacao(String identificacao) {\r\n\t\tthis.identificacao = identificacao;\r\n\t}\r\n}\r\n>>>>>>> main\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Profissional.java b/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Profissional.java
+--- a/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Profissional.java	(revision 0902a59948d5c65494d8ad5e90083d18c2da05b4)
++++ b/easyhealthapi/src/main/java/com/fatec/easyhealthapi/model/Profissional.java	(date 1750592491282)
+@@ -10,14 +10,14 @@
+ 	private String especialidade;
+ 	private String identificacao;
+ 
+-<<<<<<< HEAD
++
+ 	// Getters e Setters manuais
+ 	public String getEspecialidade() { return especialidade; }
+ 	public void setEspecialidade(String especialidade) { this.especialidade = especialidade; }
+ 	public String getIdentificacao() { return identificacao; }
+ 	public void setIdentificacao(String identificacao) { this.identificacao = identificacao; }
+ }
+-=======
++
+ 	public Profissional() {}
+ 
+ 	public Profissional(String especialidade, String identificacao) {
+@@ -41,4 +41,3 @@
+ 		this.identificacao = identificacao;
+ 	}
+ }
+->>>>>>> main
