@@ -7,22 +7,16 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "pacientes")
 public class Paciente extends Person {
-
     @Column(name = "ocupacao")
     private String ocupacao;
-
     @Column(name = "estado_civil")
     private String estadoCivil;
-
     @Column(name = "nacionalidade")
     private String nacionalidade;
-
     @Column(name = "nome_social")
     private String nomeSocial;
-
     @Column(name = "peso")
     private Double peso;
-
     @Column(name = "altura")
     private Double altura;
 

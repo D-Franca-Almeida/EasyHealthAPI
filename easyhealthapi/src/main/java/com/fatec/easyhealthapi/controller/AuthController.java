@@ -1,113 +1,60 @@
 package com.fatec.easyhealthapi.controller;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import com.fatec.easyhealthapi.enums.Genero;
-import com.fatec.easyhealthapi.model.*;
-import com.fatec.easyhealthapi.repository.PacienteRepository;
-import com.fatec.easyhealthapi.repository.ProfissionalRepository;
 import com.fatec.easyhealthapi.service.AuthService;
+// Remova o import do Lombok se ele não for mais usado em outras anotações
+// import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
+// @RequiredArgsConstructor // 1. REMOVA ESTA ANOTAÇÃO
 public class AuthController {
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
 
-    @Autowired
-    private PacienteRepository pacienteRepository;
-
-    @Autowired
-    private ProfissionalRepository profissionalRepository;
+    // 2. ADICIONE O CONSTRUTOR MANUALMENTE
+    // Este construtor faz exatamente o que o @RequiredArgsConstructor deveria fazer.
+    // O Spring usará este construtor para injetar a dependência do AuthService.
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("/signup-paciente")
     public ResponseEntity<?> signupPaciente(@RequestBody Map<String, String> body) {
         try {
-            Paciente paciente = new Paciente();
-            paciente.setNome(body.get("nome"));
-            paciente.setEmail(body.get("email"));
-            paciente.setSenha(body.get("senha")); // Ideal: criptografar
-            paciente.setCpf(body.get("cpf"));
-            paciente.setTelefone(body.get("telefone"));
-            paciente.setEndereco(body.get("endereco"));
-            paciente.setDataNascimento(LocalDate.parse(body.get("dataNascimento"), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            paciente.setGenero(Genero.valueOf(body.get("genero").toUpperCase()));
-
-            paciente.setAltura(Double.parseDouble(body.get("altura"))); // Altura em metros
-            paciente.setPeso(Double.parseDouble(body.get("peso")));     // Peso em kg
-            paciente.setEstadoCivil(body.get("estadocivil"));
-            paciente.setNacionalidade(body.get("nacionalidade"));
-            paciente.setNomeSocial(body.get("nomesocial"));
-            paciente.setOcupacao(body.get("ocupacao"));
-
-            pacienteRepository.save(paciente);
-
+            authService.signupPaciente(body);
             return ResponseEntity.ok("Paciente cadastrado com sucesso.");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao cadastrar paciente: " + e.getMessage());
         }
     }
 
-
-
     @PostMapping("/signup-profissional")
     public ResponseEntity<?> signupProfissional(@RequestBody Map<String, String> body) {
         try {
-            Profissional profissional = new Profissional();
-            profissional.setNome(body.get("nome"));
-            profissional.setEmail(body.get("email"));
-            profissional.setSenha(body.get("senha"));
-            profissional.setCpf(body.get("cpf"));
-            profissional.setTelefone(body.get("telefone"));
-            profissional.setEndereco(body.get("endereco"));
-            profissional.setDataNascimento(LocalDate.parse(body.get("dataNascimento"), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            profissional.setGenero(Genero.valueOf(body.get("genero").toUpperCase()));
-
-            // Campos específicos
-            profissional.setEspecialidade(body.get("especialidade"));
-            profissional.setIdentificacao(body.get("identificacao"));
-
-            profissionalRepository.save(profissional);
-
+            authService.signupProfissional(body);
             return ResponseEntity.ok("Profissional cadastrado com sucesso.");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao cadastrar profissional: " + e.getMessage());
         }
     }
 
-
-
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody Map<String, String> credentials) {
         try {
-            Token token = authService.signin(
+            String jwtToken = authService.signin(
                     credentials.get("email"),
                     credentials.get("senha")
             );
-            return ResponseEntity.ok(token);
+            return ResponseEntity.ok(Map.of("token", jwtToken));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+            return ResponseEntity.status(401).body("Email ou senha inválidos.");
         }
-    }
-
-    @PostMapping("/check")
-    public ResponseEntity<?> check(@RequestHeader String token) {
-        Boolean isValid = authService.validate(token);
-        return (isValid) ? ResponseEntity.ok().build()
-                : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
-
-    @PostMapping("/signout")
-    public ResponseEntity<?> signout(@RequestHeader String token) {
-        authService.signout(token);
-        return ResponseEntity.ok().build();
     }
 }
