@@ -16,22 +16,20 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
-    private final AuthenticationProvider authenticationProvider;
+    private final AuthenticationProvider authenticationProvider; // Depende do Provider, não do PersonRepository
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Desabilita CSRF, comum em APIs stateless
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // Define quais endpoints são públicos (não precisam de autenticação)
-                        .requestMatchers("/auth/**", "/objectives/**").permitAll()
-                        // Todas as outras requisições devem ser autenticadas
+                        // Endpoints públicos
+                        .requestMatchers("/auth/**").permitAll()
+                        // Todas as outras requisições exigem autenticação
                         .anyRequest().authenticated()
                 )
-                // Configura a gestão de sessão para ser stateless, já que usamos JWT
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
-                // Adiciona nosso filtro JWT para ser executado antes do filtro padrão do Spring
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
