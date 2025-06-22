@@ -1,37 +1,34 @@
-# EasyHealth
-Projeto interdisciplinar para Faculdade de Tecnologia de Cotia. 
-
-A EasyHealth API fornece o back-end para um aplicativo focado em promover um estilo de vida mais saudável. A plataforma permite que usuários (pacientes e profissionais) se cadastrem, interajam e gerenciem atividades de saúde. A principal funcionalidade é a geração de tarefas (hábitos) personalizadas para os usuários com base em seus objetivos de saúde pré-definidos, como "Perder Peso" ou "Reduzir Estresse".
+EasyHealth API
+Projeto Interdisciplinar - Faculdade de Tecnologia de Cotia
+A EasyHealth API é o back-end para uma plataforma de saúde e bem-estar, projetada para conectar Pacientes e Profissionais. O sistema permite o gerenciamento de hábitos saudáveis através de tarefas personalizadas, agendamento de consultas e um ambiente seguro de autenticação.
 
 ✨ Principais Funcionalidades
-Autenticação de Usuários: Sistema de cadastro e login para diferentes perfis de usuário (Paciente e Profissional).
-Herança de Perfis: Utiliza uma estrutura de herança com uma entidade Person base, da qual Paciente e Profissional herdam atributos comuns.
-Catálogo de Hábitos: O sistema possui um catálogo pré-definido e expansível de Objetivos e Hábitos saudáveis.
-Geração de Tarefas Personalizadas: Um usuário pode selecionar um objetivo e o sistema automaticamente cria uma lista de tarefas (hábitos) correspondentes para ele.
-CRUD de Tarefas: Ciclo completo de criação, leitura, atualização de status e deleção (lógica) das tarefas de um usuário.
+Autenticação Segura com JWT: Sistema de cadastro e login baseado em JSON Web Tokens (JWT) e integrado com Spring Security. As senhas são armazenadas de forma segura usando criptografia (BCrypt).
+Perfis de Usuário com Herança: Utiliza uma estrutura de herança com uma entidade Person base, da qual Paciente e Profissional herdam atributos comuns, promovendo a reutilização de código.
+Catálogo de Hábitos Dinâmico: O sistema possui um catálogo de Objetivos e Modelos de Hábito que é carregado na inicialização, permitindo que a lista de atividades saudáveis seja facilmente expandida no futuro.
+Geração de Tarefas Personalizadas: Usuários podem selecionar um objetivo de saúde (ex: "Perder Peso"), e a API automaticamente cria uma lista de tarefas (hábitos) correspondentes para eles.
+CRUD Completo de Tarefas: Ciclo completo de criação (assign), leitura, atualização de status (PENDING, DONE) e deleção lógica (DELETED) das tarefas de um usuário.
 Agendamento de Consultas: Funcionalidade para que pacientes agendem consultas com profissionais.
-Outros Módulos: Inclui a base para funcionalidades de Chat, Pagamentos e gerenciamento de Tokens.
+Código Limpo com Lombok: Utilização extensiva do Lombok para reduzir código boilerplate e manter as classes de modelo e DTOs limpas e legíveis.
 🚀 Arquitetura e Tecnologias
-Este projeto foi construído utilizando as seguintes tecnologias:
-
-Java 17+
-Spring Boot 3+
-Spring Data JPA / Hibernate: Para persistência de dados e mapeamento objeto-relacional.
-Maven/Gradle: Como gerenciador de dependências e build.
-Banco de Dados: Compatível com bancos relacionais como PostgreSQL, MySQL ou H2 (para ambiente de desenvolvimento).
+Linguagem: Java 21
+Framework Principal: Spring Boot 3.4.3
+Segurança: Spring Security 6+
+Tokens: JSON Web Token (JWT) com a biblioteca JJWT
+Persistência: Spring Data JPA / Hibernate
+Banco de Dados: PostgreSQL (configurado para desenvolvimento)
+Build e Dependências: Maven
+Redução de Boilerplate: Lombok
 📂 Estrutura do Projeto
-O código-fonte está organizado nos seguintes pacotes principais:
-
-config: Classes de configuração, como o DataInitializer que popula o banco de dados na inicialização.
-controller: Camada de API REST, responsável por expor os endpoints e receber as requisições HTTP.
-dto: (Data Transfer Objects) Objetos simples para transferir dados entre o cliente e o servidor.
+config: Classes de configuração, como o DataInitializer que popula o banco.
+controller: Camada REST que expõe os endpoints da API.
+dto: (Data Transfer Objects) Classes para transferência de dados entre cliente e servidor.
 enums: Enumerações utilizadas no projeto (Status, Gênero, etc.).
-model: As entidades JPA que representam o modelo de dados e as tabelas do banco.
-repository: Interfaces do Spring Data JPA para acesso e manipulação dos dados no banco.
-service: Camada de serviço, onde reside a lógica de negócio da aplicação.
+model: Entidades JPA que representam o modelo de dados.
+repository: Interfaces Spring Data JPA para acesso ao banco de dados.
+service: Camada de serviço contendo a lógica de negócio.
+security: Pacote dedicado à configuração do Spring Security, filtro JWT e lógica de autenticação.
 ⚙️ Configuração do Ambiente
-Para executar este projeto localmente, siga os passos abaixo:
-
 Clone o Repositório:
 
 Bash
@@ -40,56 +37,66 @@ git clone [URL_DO_SEU_REPOSITORIO]
 cd easyhealthapi
 Pré-requisitos:
 
-Java JDK 17 ou superior instalado.
-Maven ou Gradle instalado.
-Configure o Banco de Dados:
+Java JDK 21 ou superior.
+Maven 3.6+ (ou use o Maven Wrapper incluído).
+Configure o application.properties:
 
 Abra o arquivo src/main/resources/application.properties.
-Adicione as configurações para o seu banco de dados. Abaixo um exemplo para PostgreSQL:
+Garanta que as configurações do banco de dados e do JWT estejam corretas.
 <!-- end list -->
 
 Properties
 
+# Configuração do Servidor
+server.port=8181
+
 # Configuração do Banco de Dados PostgreSQL
 spring.datasource.url=jdbc:postgresql://localhost:5432/easyhealthdb
 spring.datasource.username=postgres
-spring.datasource.password=sua_senha
-spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.password=sua_senha_do_banco
 
 # Configuração do Hibernate
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
-Importante: A propriedade spring.jpa.hibernate.ddl-auto=update fará com que o Hibernate atualize o schema do banco com base nas suas entidades. Na primeira execução, ele criará todas as tabelas.
-▶️ Executando a Aplicação
-Após configurar o ambiente, você pode iniciar a aplicação com o seguinte comando Maven:
 
+# Configuração do JWT (obrigatória para a aplicação iniciar)
+jwt.secret=a4b8c1d9e2f3g4h5i6j7k8l9m0n1o2p3q4r5s6t7u8v9w0x1y2z3a4b5c6d7
+jwt.expiration=86400000 # 24 horas em milissegundos
+▶️ Executando a Aplicação
+Abra um terminal na raiz do projeto.
+Execute o comando usando o Maven Wrapper (recomendado):
 Bash
 
 ./mvnw spring-boot:run
-Ou, se preferir, execute a classe principal EasyhealthapiApplication.java a partir da sua IDE. A API estará disponível em http://localhost:8181.
+Ou, no Windows:
+Bash
+
+mvnw spring-boot:run
+A API estará disponível em http://localhost:8181.
 
 📖 Documentação da API
-Abaixo estão os principais endpoints implementados.
+O fluxo de uso da API é:
 
-Autenticação (/auth)
-Método	| Endpoint |	Descrição	| Parâmetros/Headers |	Corpo da Requisição (Exemplo)
-POST	/auth/signup-paciente	Cadastra um novo paciente.	(nenhum)	{"nome": "...", "email": "...", "senha": "...", ...}
-POST	/auth/signup-profissional	Cadastra um novo profissional.	(nenhum)	{"nome": "...", "email": "...", "senha": "...", ...}
-POST	/auth/signin	Realiza o login e retorna um token.	(nenhum)	{"email": "...", "senha": "..."}
-POST	/auth/check	Verifica se um token de autenticação ainda é válido.	Header: token: SEU_TOKEN_AQUI	(nenhum)
-POST	/auth/signout	Invalida um token, efetivamente realizando o logout do usuário.	Header: token: SEU_TOKEN_AQUI	(nenhum)
+Cadastre um usuário via /auth/signup-*.
+Faça login via /auth/signin para obter um token JWT.
+Use esse token JWT no cabeçalho Authorization de todas as requisições para endpoints protegidos.
+Endpoints Públicos (Autenticação)
+Método	Endpoint	Descrição	Corpo da Requisição (Exemplo)
+POST	/auth/signup-paciente	Cadastra um novo paciente. A senha enviada será criptografada.	{"nome": "...", "email": "...", "senha": "plain_text", ...}
+POST	/auth/signup-profissional	Cadastra um novo profissional. A senha enviada será criptografada.	{"nome": "...", "email": "...", "senha": "plain_text", ...}
+POST	/auth/signin	Realiza o login e retorna um token JWT válido por 24 horas.	{"email": "...", "senha": "..."}
 
-Tarefas e Objetivos
-Método	Endpoint	Descrição	Corpo da Requisição
+Exportar para as Planilhas
+Endpoints Protegidos (Exigem Autenticação)
+Para acessar os endpoints abaixo, inclua o token JWT no cabeçalho de cada requisição:
+Header: Authorization
+Valor: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQi...
+
+Método	Endpoint	Descrição	Corpo da Requisição (Exemplo)
 GET	/objectives	Lista todos os objetivos de saúde disponíveis no catálogo.	(nenhum)
 POST	/tasks/person/{id}/assign-objective?objectiveId={id}	Cria as tarefas de um objetivo para uma pessoa específica.	(nenhum)
 GET	/tasks/person/{id}	Lista todas as tarefas de uma pessoa específica.	(nenhum)
 PUT	/tasks/{id}/status	Atualiza o status de uma tarefa específica.	{"status": "DONE"}
 DELETE	/tasks/{id}	Realiza a deleção lógica de uma tarefa.	(nenhum)
-
-Consultas (/consultas)
-Método	Endpoint	Descrição	Corpo da Requisição
-POST	/consultas/agendar	Agenda uma nova consulta entre um paciente e um profissional.	{"pacienteId": 1, "profissionalId": 2, ...}
-
-
+POST	/consultas/agendar	Agenda uma nova consulta.	{"pacienteId": 1, "profissionalId": 2, ...}
