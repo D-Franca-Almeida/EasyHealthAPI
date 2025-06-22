@@ -2,13 +2,17 @@ package com.fatec.easyhealthapi.repository;
 
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+// import org.springframework.data.repository.CrudRepository; // Remover esta linha
+import org.springframework.data.jpa.repository.JpaRepository; // Adicionar esta linha
 
 import com.fatec.easyhealthapi.model.Person;
 
-public interface PersonRepository   extends CrudRepository<Person,Integer> {
-    // Métodos customizados podem ser adicionados aqui
-	Optional<Person> findByEmail(String email);
+// Apenas troque CrudRepository por JpaRepository
+public interface PersonRepository extends JpaRepository<Person,Integer> {
 
-    Optional<Object> findByCpf(String cpf);
+    Optional<Person> findByEmail(String email);
+
+    // O método findByCpf retornando Optional<Object> pode causar problemas.
+    // O ideal é que ele retorne Optional<Person> também.
+    Optional<Person> findByCpf(String cpf);
 }

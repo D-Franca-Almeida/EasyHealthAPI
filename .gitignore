@@ -33,3 +33,4 @@ src/main/resources/application-*.yml
 easyhealthapi/src/main/resources/application.properties
 easyhealthapi/src/main/resources/application.yml
 
+/.metadata/
