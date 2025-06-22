@@ -36,7 +36,9 @@ public class JwtService {
 
     public String generateToken(Person person) {
         Map<String, Object> claims = new HashMap<>();
+        // Você pode adicionar claims personalizadas aqui
         claims.put("userId", person.getId());
+        // Adiciona a classe da pessoa (Paciente ou Profissional) como "role"
         claims.put("role", person.getClass().getSimpleName());
 
         return buildToken(claims, person.getEmail());
@@ -55,6 +57,7 @@ public class JwtService {
         return extractClaim(token, Claims::getExpiration);
     }
 
+<<<<<<< HEAD
     private Claims extractAllClaims(String token) {
         return Jwts
                 .parserBuilder()
@@ -63,6 +66,8 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
+=======
+>>>>>>> parent of f2f66c5 (refatorando código e adicionando jwt)
 
 
     private String buildToken(Map<String, Object> extraClaims, String subject) {
